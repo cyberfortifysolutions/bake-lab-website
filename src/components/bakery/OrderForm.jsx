@@ -201,18 +201,33 @@ export default function OrderForm() {
             <button
               type="submit"
               disabled={status === 'sending'}
-              className="btn-gold"
               style={{
                 width: '100%', padding: '18px',
-                borderRadius: '6px', border: 'none',
+                borderRadius: '4px',
+                border: '1px solid rgba(201,168,76,0.35)',
+                background: 'transparent',
                 cursor: status === 'sending' ? 'not-allowed' : 'pointer',
-                fontSize: '14px', fontFamily: 'Causten, Inter, sans-serif',
+                fontSize: '13px', fontFamily: 'Causten, Inter, sans-serif',
+                fontWeight: '700',
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                color: '#C9A84C',
                 display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px',
                 opacity: status === 'sending' ? 0.7 : 1,
-              }}>
+                transition: 'all 0.3s ease',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = 'rgba(201,168,76,0.08)';
+                e.currentTarget.style.borderColor = '#C9A84C';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = 'transparent';
+                e.currentTarget.style.borderColor = 'rgba(201,168,76,0.35)';
+              }}
+            >
               {status === 'sending' ? (
                 <><Loader2 size={18} style={{ animation: 'spin 1s linear infinite' }} /> Sending...</>
-              ) : 'Send Order Request'}
+              ) : 'Place Order'}
             </button>
 
             {status === 'error' && (
