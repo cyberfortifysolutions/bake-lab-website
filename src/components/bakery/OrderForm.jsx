@@ -227,7 +227,7 @@ export default function OrderForm() {
             >
               {status === 'sending' ? (
                 <><Loader2 size={18} style={{ animation: 'spin 1s linear infinite' }} /> Sending...</>
-              ) : 'Place Order'}
+              ) : 'PLACE ORDER'}
             </button>
 
             {status === 'error' && (
